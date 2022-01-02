@@ -58,6 +58,8 @@ class _HomeState extends State<Home> {
     ".....": "5"
   };
 
+  bool _isPressed = false;
+
   String input = "";
   String output = "";
   Timer _timer = Timer.periodic(const Duration(days: 30), (_) {});
@@ -70,8 +72,6 @@ class _HomeState extends State<Home> {
         input += '.';
       });
       _timer = Timer.periodic(const Duration(seconds: 3), _tryParse);
-      print(input);
-      print(_timer.isActive);
     }
   }
 
@@ -83,8 +83,6 @@ class _HomeState extends State<Home> {
         input += '-';
       });
       _timer = Timer.periodic(const Duration(seconds: 3), _tryParse);
-      print(input);
-      print(_timer.isActive);
     }
   }
 
@@ -100,23 +98,69 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-                child: InkWell(
-              onTap: _point,
-              onLongPress: _line,
-              child: const CircleAvatar(
-                backgroundColor: Colors.amber,
-              ),
-            )),
+                child: GestureDetector(
+                    onTap: _point,
+                    onLongPress: _line,
+                    onLongPressStart: (details) {
+                      setState(() {
+                        _isPressed = true;
+                      });
+                    },
+                    onLongPressEnd: (details) {
+                      setState(() {
+                        _isPressed = false;
+                      });
+                    },
+                    child: Container(
+                      width: 150.0,
+                      height: 150.0,
+                      child: Container(
+                        margin: const EdgeInsets.all(35.0),
+                        width: 75,
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: _isPressed ? Colors.green : Colors.amber,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Colors.amber,
+                        shape: BoxShape.circle,
+                      ),
+                    ))),
             Text(
-              output.isNotEmpty ? output : "Text Here",
+              input.isNotEmpty ? input : "",
               style: const TextStyle(color: Colors.amber, fontSize: 28),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              output.isNotEmpty ? output : "Waiting...",
+              style: const TextStyle(color: Colors.amber, fontSize: 28),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    input = "";
+                    output = "";
+                  });
+                },
+                child: const Text(
+                  "CLEAR",
+                  style: TextStyle(
+                      fontSize: 24, color: Colors.red, letterSpacing: 1.5),
+                ))
           ],
         ),
       ),
