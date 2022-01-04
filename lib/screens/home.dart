@@ -104,6 +104,13 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Text(
+              "Morse Interpreter",
+              style: TextStyle(color: Colors.amber, fontSize: 32),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             Center(
                 child: GestureDetector(
                     onTap: _point,
