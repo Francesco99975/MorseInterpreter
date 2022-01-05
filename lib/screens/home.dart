@@ -128,17 +128,8 @@ class _HomeState extends State<Home> {
                     child: Container(
                       width: 150.0,
                       height: 150.0,
-                      child: Container(
-                        margin: const EdgeInsets.all(35.0),
-                        width: 75,
-                        height: 75,
-                        decoration: BoxDecoration(
-                          color: _isPressed ? Colors.green : Colors.amber,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      decoration: const BoxDecoration(
-                        color: Colors.amber,
+                      decoration: BoxDecoration(
+                        color: _isPressed ? Colors.blue : Colors.amber,
                         shape: BoxShape.circle,
                       ),
                     ))),
