@@ -128,6 +128,10 @@ class _HomeState extends State<Home> {
                     child: Container(
                       width: 150.0,
                       height: 150.0,
+                      child: const Text(
+                        "TAP OR LONG PRESS",
+                        style: TextStyle(color: Colors.white, fontSize: 22),
+                      ),
                       decoration: BoxDecoration(
                         color: _isPressed ? Colors.blue : Colors.amber,
                         shape: BoxShape.circle,
