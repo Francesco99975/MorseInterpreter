@@ -1,4 +1,4 @@
-package com.example.interactive_morsecode_translator
+package dev.francescobarranca.morseinterpreter
 
 import io.flutter.embedding.android.FlutterActivity
 
