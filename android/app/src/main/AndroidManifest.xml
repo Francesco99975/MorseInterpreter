@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package=dev.francescobarranca.morseinterpreter">
+    package="dev.francescobarranca.morseinterpreter">
    <application
-        android:label="interactive_morsecode_translator"
+        android:label="Morse Interpreter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
